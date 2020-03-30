@@ -46,6 +46,10 @@ h2 {
     margin: 0 auto;
 }
 
+.transaction-date {
+    font-size: 0.9rem;
+}
+
 h1 {
     letter-spacing: 1px;
     margin: 0;
@@ -101,7 +105,8 @@ label {
 }
 
 input[type='text'],
-input[type='number'] {
+input[type='number'],
+input[type='date'] {
     border: 1px solid #dedede;
     border-radius: 2px;
     display: block;
