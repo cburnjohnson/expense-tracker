@@ -13,7 +13,7 @@ const Balance = () => {
     return (
         <div className='balance'>
             <h4 className='highlight'>Your Balance</h4>
-            <h1>${total}</h1>
+            <h1>{total < 0 ? '- $' + Math.abs(total) : '$' + total}</h1>
         </div>
     );
 };
