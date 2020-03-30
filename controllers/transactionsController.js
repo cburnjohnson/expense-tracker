@@ -1,20 +1,22 @@
+const Transaction = require('../models/Transaction');
+
 // @desc    Get all transactions
 // @route   GET /api/transactions
 // @access  Public
-exports.getTransactions = (req, res, next) => {
+exports.getTransactions = async (req, res, next) => {
     res.send('get trans');
 };
 
 // @desc    Add transaction
 // @route   POST /api/transactions
 // @access  Public
-exports.addTransaction = (req, res, next) => {
+exports.addTransaction = async (req, res, next) => {
     res.send('POST trans');
 };
 
 // @desc    Delete transactions
 // @route   GET /api/transactions/:id
 // @access  Public
-exports.deleteTransaction = (req, res, next) => {
+exports.deleteTransaction = async (req, res, next) => {
     res.send('delete trans');
 };
