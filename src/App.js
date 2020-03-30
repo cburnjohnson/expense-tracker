@@ -16,8 +16,15 @@ function App() {
             <div className='container'>
                 <Balance />
                 <IncomeExpenses />
-                <TransactionList />
-                <AddTransaction />
+            </div>
+            <div className='transaction-grid'>
+                <div className='transaction-list'>
+                    <TransactionList />
+                </div>
+
+                <div className='transaction-form'>
+                    <AddTransaction />
+                </div>
             </div>
         </GlobalProvider>
     );
