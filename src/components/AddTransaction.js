@@ -19,6 +19,9 @@ const AddTransaction = () => {
         };
 
         addTransaction(newTransaction);
+        setText('');
+        setAmount(0);
+        document.querySelector('input[type="text"').focus();
     };
 
     return (
