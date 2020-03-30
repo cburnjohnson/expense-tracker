@@ -10,10 +10,12 @@ const Transaction = ({ transaction }) => {
     return (
         <li className={transaction.amount < 0 ? 'minus' : 'plus'}>
             {transaction.text}
-            <span>
+            <span className={transaction.amount < 0 ? 'expense' : 'income'}>
                 {sign}${Math.abs(transaction.amount)}
             </span>
-            <span className='transaction-date'>{transaction.date}</span>
+            <span className='transaction-date highlight'>
+                {transaction.date}
+            </span>
             <button
                 className='delete-btn'
                 onClick={() => deleteTransaction(transaction.id)}

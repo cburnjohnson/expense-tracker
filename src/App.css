@@ -56,7 +56,7 @@ h1 {
 }
 
 h3 {
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid #9c88ff;
     padding-bottom: 10px;
     margin: 40px 0 10px;
     font-size: 1.25rem;
@@ -99,6 +99,14 @@ h4 {
     color: #c0392b;
 }
 
+.income {
+    color: #2ecc71;
+}
+
+.expense {
+    color: #c0392b;
+}
+
 label {
     display: inline-block;
     margin: 10px 0;
@@ -113,6 +121,11 @@ input[type='date'] {
     font-size: 16px;
     padding: 10px;
     width: 100%;
+    outline-color: #9c88ff;
+}
+
+.highlight {
+    color: #9c88ff;
 }
 
 .btn {
