@@ -126,6 +126,12 @@ input[type='date'] {
     margin: 10px 0 30px;
     padding: 10px;
     width: 100%;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #917fee;
 }
 
 .btn:focus,

@@ -40,7 +40,7 @@ const AddTransaction = () => {
 
     return (
         <>
-            <h3>Add new transaction</h3>
+            <h3>Add New Transaction</h3>
             <form onSubmit={onSubmit}>
                 <div className='form-control'>
                     <label htmlFor='text'>Transaction Name</label>
@@ -75,7 +75,7 @@ const AddTransaction = () => {
                         required
                     />
                 </div>
-                <button className='btn'>Add transaction</button>
+                <button className='btn'>ADD TRANSACTION</button>
             </form>
         </>
     );
