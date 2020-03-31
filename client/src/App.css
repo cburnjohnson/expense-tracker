@@ -208,23 +208,25 @@ input[type='date'] {
 
 .img {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
 }
 
 .login-container {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
+    height: 80%;
+    margin: auto 0;
 }
 
 .img {
     width: 500px;
+    margin: 0 auto;
 }
 
 form {
-    width: 360px;
+    width: 450px;
 }
 
 .avatar {
@@ -398,7 +400,7 @@ input[type='submit'].btn:hover {
 }
 
 @media screen and (max-width: 900px) {
-    .container {
+    .login-page-container {
         grid-template-columns: 1fr;
     }
 
@@ -412,5 +414,6 @@ input[type='submit'].btn:hover {
 
     .login-container {
         justify-content: center;
+        align-items: center;
     }
 }
