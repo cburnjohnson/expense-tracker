@@ -2,28 +2,28 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
-import Avatar from './ProfilePic';
-import Banking from './Banking';
+import Avatar from '../login/ProfilePic';
+import SignUpSVG from './SignUpSVG';
 
 const LoginForm = () => {
     return (
         <div className='login-page-container'>
             <div className='img'>
-                <Banking />
+                <SignUpSVG />
             </div>
 
             <div className='login-container'>
                 <form>
                     <Avatar />
-                    <h2>Login</h2>
+                    <h2>Register</h2>
                     <div className='input-div one'>
                         <div className='i'>
                             <FontAwesomeIcon icon={faUser} />
                         </div>
                         <div>
-                            <h5>Username</h5>
+                            <h5>Email</h5>
                             <input
-                                type='text'
+                                type='email'
                                 className='input'
                                 onClick={e =>
                                     e.target.parentNode.parentNode.classList.add(
@@ -60,8 +60,30 @@ const LoginForm = () => {
                             />
                         </div>
                     </div>
+                    <div className='input-div two'>
+                        <div className='i'>
+                            <FontAwesomeIcon icon={faLock} />
+                        </div>
+                        <div>
+                            <h5>Confirm Password</h5>
+                            <input
+                                type='password'
+                                className='input'
+                                onClick={e =>
+                                    e.target.parentNode.parentNode.classList.add(
+                                        'focus'
+                                    )
+                                }
+                                onBlur={e =>
+                                    e.target.parentNode.parentNode.classList.remove(
+                                        'focus'
+                                    )
+                                }
+                            />
+                        </div>
+                    </div>
                     <a href='#'>Forgot Password?</a>
-                    <input type='submit' value='Login' className='btn' />
+                    <input type='submit' value='Register' className='btn' />
                 </form>
             </div>
         </div>
