@@ -275,6 +275,7 @@ form {
     color: #999;
     font-size: 18px;
     transition: 0.3s;
+    top: -30px;
 }
 
 .input-div:before,
