@@ -35,6 +35,7 @@ const AddTransaction = () => {
                         value={text}
                         onChange={e => setText(e.target.value)}
                         placeholder='Enter transaction...'
+                        className='transaction-input'
                         required
                     />
                 </div>
@@ -46,6 +47,7 @@ const AddTransaction = () => {
                         </span>
                     </label>
                     <input
+                        className='transaction-input'
                         type='number'
                         value={amount}
                         onChange={e => setAmount(e.target.value)}

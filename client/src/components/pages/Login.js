@@ -4,9 +4,9 @@ import LoginForm from '../login/LoginForm';
 
 const Login = () => {
     return (
-        <div>
+        <>
             <LoginForm />
-        </div>
+        </>
     );
 };
 
