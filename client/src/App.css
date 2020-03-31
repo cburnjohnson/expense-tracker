@@ -207,7 +207,6 @@ input[type='date'] {
 }
 
 .img {
-    width: 500px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -215,8 +214,13 @@ input[type='date'] {
 
 .login-container {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
+}
+
+.img {
+    width: 500px;
 }
 
 form {
@@ -224,18 +228,19 @@ form {
 }
 
 .avatar {
-    width: 100px;
     height: 100px;
+    width: 100px;
 }
 
-form h2 {
-    font-size: 2.9rem;
-    text-transform: uppercase;
+.login-container h2 {
     margin: 15px 0;
     color: #333;
+    text-transform: uppercase;
+    font-size: 2.9rem;
 }
 
-.input-div {
+.login-container .input-div {
+    position: relative;
     display: grid;
     grid-template-columns: 7% 93%;
     margin: 25px 0;
@@ -243,22 +248,19 @@ form h2 {
     border-bottom: 2px solid #d9d9d9;
 }
 
-.input-div.one {
+.login-container .input-div.one {
     margin-top: 0;
 }
 
-.input-div.two {
-    margin-bottom: 4px;
-}
-
 .i {
+    color: #d9d9d9;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .i svg {
-    color: #d9d9d9;
+    transition: 0.3s;
 }
 
 .input-div > div {
@@ -266,26 +268,148 @@ form h2 {
     height: 45px;
 }
 
-.input-div > div h5 {
+.input-div > div > h5 {
     position: absolute;
     left: 10px;
-    transform: translate(-50%);
+    transform: translateY(-80%);
     color: #999;
     font-size: 18px;
-    display: none;
-    transition: .3s;
+    transition: 0.3s;
 }
 
-.input {
+.input-div:before,
+.input-div:after {
+    content: '';
     position: absolute;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #9c88ff;
+    transition: 0.4s;
+}
+
+.input-div:before {
+    right: 50%;
+}
+
+.input-div:after {
+    left: 50%;
+}
+
+.input-div.focus:before,
+.input-div.focus:after {
+    width: 50%;
+}
+
+.input-div.focus > div > h5 {
+    top: -30px;
+    font-size: 15px;
+}
+
+.input-div.focus > .i > svg {
+    color: #9c88ff;
+}
+
+.input-div > div > input {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
     border: none;
     outline: none;
     background: none;
     padding: 0.5rem 0.7rem;
     font-size: 1.2rem;
     color: #555;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #555;
+    -webkit-box-shadow: 0 0 0px 1000px #e2e2e2 inset;
+    font-size: 1.2rem;
+}
+
+.input-div.pass {
+    margin-bottom: 4px;
+}
+
+a {
+    display: block;
+    text-align: right;
+    text-decoration: none;
+    color: #999;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #9c88ff;
+}
+
+input[type='submit'].btn {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #9c88ff, #8d79f0, #8571e8);
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+input[type='submit'].btn:hover {
+    background-position: right;
+}
+
+@media screen and (max-width: 1050px) {
+    .container {
+        grid-gap: 5rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    form {
+        width: 290px;
+    }
+
+    .login-container h2 {
+        font-size: 2.4rem;
+        margin: 8px 0;
+    }
+
+    .img {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .img {
+        display: none;
+    }
+
+    .wave {
+        display: none;
+    }
+
+    .login-container {
+        justify-content: center;
+    }
 }
