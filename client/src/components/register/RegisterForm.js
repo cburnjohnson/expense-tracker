@@ -14,7 +14,9 @@ const LoginForm = () => {
         isAuthenticated,
         loadUser,
         token,
-        setAlert
+        setAlert,
+        error,
+        removeError
     } = useContext(GlobalContext);
 
     const [user, setUser] = useState({
@@ -27,8 +29,12 @@ const LoginForm = () => {
         if (token) {
             loadUser();
         }
+        if (error) {
+            setAlert(error);
+            removeError();
+        }
         // eslint-disable-next-line
-    }, []);
+    }, [error]);
 
     if (isAuthenticated) {
         return <Redirect to='/' />;
@@ -95,6 +101,7 @@ const LoginForm = () => {
                             <input
                                 type='password'
                                 className='input'
+                                minLength='6'
                                 onFocus={e =>
                                     e.target.parentNode.parentNode.classList.add(
                                         'focus'
@@ -124,6 +131,7 @@ const LoginForm = () => {
                             <input
                                 type='password'
                                 className='input'
+                                minLength='6'
                                 onFocus={e =>
                                     e.target.parentNode.parentNode.classList.add(
                                         'focus'

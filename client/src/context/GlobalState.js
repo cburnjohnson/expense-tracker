@@ -84,6 +84,7 @@ export const GlobalProvider = ({ children }) => {
                 payload: res.data
             });
         } catch (err) {
+            console.log(err.response.data.msg);
             dispatch({
                 type: 'REGISTER_ERROR',
                 payload: err.response.data.msg
@@ -135,6 +136,10 @@ export const GlobalProvider = ({ children }) => {
         );
     };
 
+    const removeError = () => {
+        dispatch({ type: 'REMOVE_ERROR' });
+    };
+
     return (
         <GlobalContext.Provider
             value={{
@@ -152,7 +157,8 @@ export const GlobalProvider = ({ children }) => {
                 loadUser,
                 login,
                 logout,
-                setAlert
+                setAlert,
+                removeError
             }}
         >
             {children}
