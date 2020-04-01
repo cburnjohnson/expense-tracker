@@ -3,14 +3,21 @@ import { GlobalContext } from '../../context/GlobalState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link, Redirect } from 'react-router-dom';
+import Alert from '../alerts/Alert';
 
 import Avatar from './ProfilePic';
 import Banking from './Banking';
 
 const LoginForm = props => {
-    const { login, isAuthenticated, token, loadUser } = useContext(
-        GlobalContext
-    );
+    const {
+        login,
+        isAuthenticated,
+        token,
+        loadUser,
+        error,
+        setAlert,
+        removeError
+    } = useContext(GlobalContext);
 
     const [user, setUser] = useState({
         email: '',
@@ -21,8 +28,12 @@ const LoginForm = props => {
         if (token) {
             loadUser();
         }
+        if (error) {
+            setAlert(error);
+            removeError();
+        }
         // eslint-disable-next-line
-    }, []);
+    }, [error]);
 
     const onSubmit = e => {
         e.preventDefault();
@@ -43,6 +54,7 @@ const LoginForm = props => {
                 <form onSubmit={onSubmit}>
                     <Avatar />
                     <h2>Login</h2>
+                    <Alert />
                     <div className='input-div one'>
                         <div className='i'>
                             <FontAwesomeIcon icon={faUser} />
