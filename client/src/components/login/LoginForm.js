@@ -2,12 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Avatar from './ProfilePic';
 import Banking from './Banking';
 
-const LoginForm = () => {
+const LoginForm = props => {
     const { login, isAuthenticated, token, loadUser } = useContext(
         GlobalContext
     );
@@ -21,15 +21,16 @@ const LoginForm = () => {
         if (token) {
             loadUser();
         }
-        if (isAuthenticated) {
-            window.location = '/';
-        }
-    }, [isAuthenticated]);
+    }, []);
 
     const onSubmit = e => {
         e.preventDefault();
         login(user);
     };
+
+    if (isAuthenticated) {
+        return <Redirect to='/' />;
+    }
 
     return (
         <div className='login-page-container'>
