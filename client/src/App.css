@@ -402,6 +402,15 @@ input[type='submit'].btn:hover {
     background-position: right;
 }
 
+.alert {
+    background-color: #9c88ff;
+    padding: 1rem 0;
+    border-radius: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 1050px) {
     .container {
         grid-gap: 5rem;
