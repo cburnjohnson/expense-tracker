@@ -26,7 +26,8 @@ export default (state, action) => {
                 isAuthenticated: false,
                 user: null,
                 error: action.payload,
-                loading: false
+                loading: false,
+                transactions: []
             };
         case 'REMOVE_ERROR':
             return {
