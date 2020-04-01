@@ -96,7 +96,7 @@ const LoginForm = () => {
                             />
                         </div>
                     </div>
-                    <Link to='/register'>Register here!</Link>
+                    <Link to='/register'>Register here</Link>
                     <input type='submit' value='Login' className='btn' />
                 </form>
             </div>
