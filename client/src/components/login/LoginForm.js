@@ -21,6 +21,7 @@ const LoginForm = props => {
         if (token) {
             loadUser();
         }
+        // eslint-disable-next-line
     }, []);
 
     const onSubmit = e => {
@@ -51,7 +52,7 @@ const LoginForm = props => {
                             <input
                                 type='text'
                                 className='input'
-                                onClick={e =>
+                                onFocus={e =>
                                     e.target.parentNode.parentNode.classList.add(
                                         'focus'
                                     )
@@ -77,7 +78,7 @@ const LoginForm = props => {
                             <input
                                 type='password'
                                 className='input'
-                                onClick={e =>
+                                onFocus={e =>
                                     e.target.parentNode.parentNode.classList.add(
                                         'focus'
                                     )

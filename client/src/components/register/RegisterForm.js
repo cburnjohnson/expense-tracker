@@ -22,6 +22,7 @@ const LoginForm = () => {
         if (token) {
             loadUser();
         }
+        // eslint-disable-next-line
     }, []);
 
     if (isAuthenticated) {
@@ -43,8 +44,6 @@ const LoginForm = () => {
         registerUser(newUser);
     };
 
-    const haveAccount = () => {};
-
     return (
         <div className='login-page-container'>
             <div className='img'>
@@ -64,7 +63,7 @@ const LoginForm = () => {
                             <input
                                 type='email'
                                 className='input'
-                                onClick={e =>
+                                onFocus={e =>
                                     e.target.parentNode.parentNode.classList.add(
                                         'focus'
                                     )
@@ -90,7 +89,7 @@ const LoginForm = () => {
                             <input
                                 type='password'
                                 className='input'
-                                onClick={e =>
+                                onFocus={e =>
                                     e.target.parentNode.parentNode.classList.add(
                                         'focus'
                                     )
@@ -119,7 +118,7 @@ const LoginForm = () => {
                             <input
                                 type='password'
                                 className='input'
-                                onClick={e =>
+                                onFocus={e =>
                                     e.target.parentNode.parentNode.classList.add(
                                         'focus'
                                     )

@@ -18,6 +18,7 @@ export default (state, action) => {
             };
         case 'AUTH_ERROR':
         case 'LOGOUT':
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,
@@ -35,14 +36,16 @@ export default (state, action) => {
         case 'ADD_TRANSACTION':
             return {
                 ...state,
-                transactions: [action.payload, ...state.transactions]
+                transactions: [action.payload, ...state.transactions],
+                loading: false
             };
         case 'DELETE_TRANSACTION':
             return {
                 ...state,
                 transactions: state.transactions.filter(
                     transaction => transaction._id !== action.payload
-                )
+                ),
+                loading: false
             };
         case 'TRANSACTION_ERROR':
             return {

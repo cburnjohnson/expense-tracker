@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { GlobalContext, GlobalProvider } from '../../context/GlobalState';
+import { GlobalContext } from '../../context/GlobalState';
 
 import Header from '../transactions/Header';
 import Balance from '../transactions/Balance';
