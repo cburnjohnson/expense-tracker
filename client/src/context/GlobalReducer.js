@@ -1,11 +1,27 @@
 export default (state, action) => {
     switch (action.type) {
+        case 'USER_LOADED':
+            return {
+                ...state,
+                user: action.payload,
+                loading: false,
+                isAuthenticated: true
+            };
         case 'REGISTER_SUCCESS':
             localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
                 isAuthenticated: true,
                 token: action.payload,
+                loading: false
+            };
+        case 'AUTH_ERROR':
+            return {
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                user: null,
+                error: action.payload,
                 loading: false
             };
         case 'GET_TRANSACTIONS':

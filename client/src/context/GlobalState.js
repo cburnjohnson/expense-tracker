@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import GlobalReducer from './GlobalReducer';
 import axios from 'axios';
+import setAuthToken from '../utils/setAuthToken';
 
 const initialState = {
     transactions: [],
@@ -88,6 +89,19 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    async function loadUser() {
+        if (localStorage.token) {
+            setAuthToken(localStorage.token);
+        }
+
+        try {
+            const res = await axios.get('/api/auth');
+            dispatch({ type: 'USER_LOADED', payload: res.data });
+        } catch (err) {
+            dispatch({ type: 'AUTH_ERROR' });
+        }
+    }
+
     return (
         <GlobalContext.Provider
             value={{
@@ -100,7 +114,8 @@ export const GlobalProvider = ({ children }) => {
                 deleteTransaction,
                 addTransaction,
                 getTransactions,
-                registerUser
+                registerUser,
+                loadUser
             }}
         >
             {children}

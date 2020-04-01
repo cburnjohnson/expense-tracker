@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { GlobalContext, GlobalProvider } from '../../context/GlobalState';
 
 import Header from '../transactions/Header';
 import Balance from '../transactions/Balance';
@@ -7,6 +8,14 @@ import TransactionList from '../transactions/TransactionList';
 import AddTransaction from '../transactions/AddTransaction';
 
 const Home = () => {
+    const { loadUser } = useContext(GlobalContext);
+
+    useEffect(() => {
+        loadUser();
+
+        // eslint-disable-next-line
+    }, []);
+
     return (
         <>
             <Header />
