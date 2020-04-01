@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
-
+import { Link } from 'react-router-dom';
 import Avatar from '../login/ProfilePic';
 import SignUpSVG from './SignUpSVG';
 
@@ -41,6 +41,8 @@ const LoginForm = props => {
 
         registerUser(newUser);
     };
+
+    const haveAccount = () => {};
 
     return (
         <div className='login-page-container'>
@@ -136,7 +138,7 @@ const LoginForm = props => {
                             />
                         </div>
                     </div>
-                    <a href='#'>Forgot Password?</a>
+                    <Link to='/login'>Already have an account?</Link>
                     <input type='submit' value='Register' className='btn' />
                 </form>
             </div>

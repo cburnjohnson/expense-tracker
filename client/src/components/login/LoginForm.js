@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 import Avatar from './ProfilePic';
 import Banking from './Banking';
@@ -95,7 +96,7 @@ const LoginForm = () => {
                             />
                         </div>
                     </div>
-                    <a href='#'>Forgot Password?</a>
+                    <Link to='/register'>Register here!</Link>
                     <input type='submit' value='Login' className='btn' />
                 </form>
             </div>
