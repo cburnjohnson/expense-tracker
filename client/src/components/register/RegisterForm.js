@@ -4,13 +4,18 @@ import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link, Redirect } from 'react-router-dom';
 import Avatar from '../login/ProfilePic';
 import SignUpSVG from './SignUpSVG';
+import Alert from '../alerts/Alert';
 
 import { GlobalContext } from '../../context/GlobalState';
 
 const LoginForm = () => {
-    const { registerUser, isAuthenticated, loadUser, token } = useContext(
-        GlobalContext
-    );
+    const {
+        registerUser,
+        isAuthenticated,
+        loadUser,
+        token,
+        setAlert
+    } = useContext(GlobalContext);
 
     const [user, setUser] = useState({
         email: '',
@@ -33,7 +38,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         if (user.password !== user.password2) {
-            return alert('Passwords must be the same');
+            setAlert('Passwords must match');
         }
 
         const newUser = {
@@ -54,6 +59,7 @@ const LoginForm = () => {
                 <form onSubmit={onSubmit}>
                     <Avatar />
                     <h2>Register</h2>
+                    <Alert />
                     <div className='input-div one'>
                         <div className='i'>
                             <FontAwesomeIcon icon={faUser} />

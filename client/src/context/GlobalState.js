@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import GlobalReducer from './GlobalReducer';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
+import { uuid } from 'uuidv4';
 
 const initialState = {
     transactions: [],
@@ -9,7 +10,8 @@ const initialState = {
     loading: true,
     token: localStorage.getItem('token'),
     isAuthenticated: null,
-    user: null
+    user: null,
+    alerts: []
 };
 
 export const GlobalContext = createContext(initialState);
@@ -122,6 +124,17 @@ export const GlobalProvider = ({ children }) => {
         dispatch({ type: 'LOGOUT' });
     }
 
+    // Set alert
+    const setAlert = (msg, timeout = 4000) => {
+        const id = uuid();
+        dispatch({ type: 'SET_ALERT', payload: { msg, id } });
+
+        setTimeout(
+            () => dispatch({ type: 'REMOVE_ALERT', payload: id }),
+            timeout
+        );
+    };
+
     return (
         <GlobalContext.Provider
             value={{
@@ -131,13 +144,15 @@ export const GlobalProvider = ({ children }) => {
                 isAuthenticated: state.isAuthenticated,
                 token: state.token,
                 user: state.user,
+                alerts: state.alerts,
                 deleteTransaction,
                 addTransaction,
                 getTransactions,
                 registerUser,
                 loadUser,
                 login,
-                logout
+                logout,
+                setAlert
             }}
         >
             {children}
