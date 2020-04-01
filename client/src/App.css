@@ -409,10 +409,6 @@ input[type='submit'].btn:hover {
 }
 
 @media screen and (max-width: 1000px) {
-    form {
-        width: 290px;
-    }
-
     .login-container h2 {
         font-size: 2.4rem;
         margin: 8px 0;
@@ -424,8 +420,26 @@ input[type='submit'].btn:hover {
 }
 
 @media screen and (max-width: 900px) {
+    form {
+        width: 100%;
+    }
     .login-page-container {
         grid-template-columns: 1fr;
+    }
+
+    .transaction-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'tForm'
+            'tList';
+    }
+
+    .transaction-list {
+        grid-area: tList;
+    }
+
+    .transaction-form {
+        grid-area: tForm;
     }
 
     .img {
