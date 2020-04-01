@@ -376,6 +376,32 @@ input[type='submit'].btn:hover {
     background-position: right;
 }
 
+#logout {
+    border: none;
+    width: 15%;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #9c88ff, #8d79f0, #8571e8);
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    transition: 0.5s;
+    border-bottom-left-radius: 25px;
+    font-weight: bold;
+}
+
+.logout-icon {
+    display: none;
+}
+
+#logout:hover {
+    background-position: right;
+}
+
 @media screen and (max-width: 1050px) {
     .container {
         grid-gap: 5rem;
@@ -413,5 +439,13 @@ input[type='submit'].btn:hover {
     .login-container {
         justify-content: center;
         align-items: center;
+    }
+
+    .logout-icon {
+        display: initial;
+    }
+
+    .logout-text {
+        display: none;
     }
 }
