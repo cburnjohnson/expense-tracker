@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { GlobalContext } from '../../context/GlobalState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
@@ -6,6 +7,29 @@ import Avatar from './ProfilePic';
 import Banking from './Banking';
 
 const LoginForm = () => {
+    const { login, isAuthenticated, token, loadUser } = useContext(
+        GlobalContext
+    );
+
+    const [user, setUser] = useState({
+        email: '',
+        password: ''
+    });
+
+    useEffect(() => {
+        if (token) {
+            loadUser();
+        }
+        if (isAuthenticated) {
+            window.location = '/';
+        }
+    }, [isAuthenticated]);
+
+    const onSubmit = e => {
+        e.preventDefault();
+        login(user);
+    };
+
     return (
         <div className='login-page-container'>
             <div className='img'>
@@ -13,7 +37,7 @@ const LoginForm = () => {
             </div>
 
             <div className='login-container'>
-                <form>
+                <form onSubmit={onSubmit}>
                     <Avatar />
                     <h2>Login</h2>
                     <div className='input-div one'>
@@ -21,7 +45,7 @@ const LoginForm = () => {
                             <FontAwesomeIcon icon={faUser} />
                         </div>
                         <div>
-                            <h5>Username</h5>
+                            <h5>Email</h5>
                             <input
                                 type='text'
                                 className='input'
@@ -34,6 +58,10 @@ const LoginForm = () => {
                                     e.target.parentNode.parentNode.classList.remove(
                                         'focus'
                                     )
+                                }
+                                value={user.email}
+                                onChange={e =>
+                                    setUser({ ...user, email: e.target.value })
                                 }
                             />
                         </div>
@@ -56,6 +84,13 @@ const LoginForm = () => {
                                     e.target.parentNode.parentNode.classList.remove(
                                         'focus'
                                     )
+                                }
+                                value={user.password}
+                                onChange={e =>
+                                    setUser({
+                                        ...user,
+                                        password: e.target.value
+                                    })
                                 }
                             />
                         </div>

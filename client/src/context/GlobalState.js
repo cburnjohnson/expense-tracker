@@ -102,6 +102,22 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    async function login(formData) {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        console.log(formData);
+        try {
+            const res = await axios.post('/api/auth', formData, config);
+
+            dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+        } catch (err) {
+            dispatch({ type: 'AUTH_ERROR' });
+        }
+    }
+
     return (
         <GlobalContext.Provider
             value={{
@@ -115,7 +131,8 @@ export const GlobalProvider = ({ children }) => {
                 addTransaction,
                 getTransactions,
                 registerUser,
-                loadUser
+                loadUser,
+                login
             }}
         >
             {children}
