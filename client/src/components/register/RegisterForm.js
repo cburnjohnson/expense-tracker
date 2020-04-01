@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,14 +7,25 @@ import SignUpSVG from './SignUpSVG';
 
 import { GlobalContext } from '../../context/GlobalState';
 
-const LoginForm = () => {
-    const { registerUser } = useContext(GlobalContext);
+const LoginForm = props => {
+    const { registerUser, isAuthenticated, loadUser, token } = useContext(
+        GlobalContext
+    );
 
     const [user, setUser] = useState({
         email: '',
         password: '',
         password2: ''
     });
+
+    useEffect(() => {
+        if (token) {
+            loadUser();
+        }
+        if (isAuthenticated) {
+            window.location = '/';
+        }
+    }, [isAuthenticated, props.history]);
 
     const onSubmit = e => {
         e.preventDefault();
