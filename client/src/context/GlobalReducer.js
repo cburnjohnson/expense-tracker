@@ -1,5 +1,13 @@
 export default (state, action) => {
     switch (action.type) {
+        case 'REGISTER_SUCCESS':
+            localStorage.setItem('token', action.payload.token);
+            return {
+                ...state,
+                isAuthenticated: true,
+                token: action.payload,
+                loading: false
+            };
         case 'GET_TRANSACTIONS':
             return {
                 ...state,

@@ -5,7 +5,10 @@ import axios from 'axios';
 const initialState = {
     transactions: [],
     error: null,
-    loading: true
+    loading: true,
+    token: localStorage.getItem('token'),
+    isAuthenticated: null,
+    user: null
 };
 
 export const GlobalContext = createContext(initialState);
@@ -62,15 +65,42 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    // Auth actions / Registration
+    async function registerUser(formData) {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        try {
+            const res = await axios.post('/api/users', formData, config);
+
+            dispatch({
+                type: 'REGISTER_SUCCESS',
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: 'REGISTER_ERROR',
+                payload: err.response.data.msg
+            });
+        }
+    }
+
     return (
         <GlobalContext.Provider
             value={{
                 transactions: state.transactions,
                 loading: state.loading,
                 error: state.error,
+                isAuthenticated: state.isAuthenticated,
+                token: state.token,
+                user: state.user,
                 deleteTransaction,
                 addTransaction,
-                getTransactions
+                getTransactions,
+                registerUser
             }}
         >
             {children}
