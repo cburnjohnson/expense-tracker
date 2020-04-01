@@ -44,7 +44,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         if (user.password !== user.password2) {
-            setAlert('Passwords must match');
+            return setAlert('Passwords must match');
         }
 
         const newUser = {
