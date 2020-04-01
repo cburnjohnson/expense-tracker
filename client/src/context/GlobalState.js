@@ -118,6 +118,10 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    async function logout() {
+        dispatch({ type: 'LOGOUT' });
+    }
+
     return (
         <GlobalContext.Provider
             value={{
@@ -132,7 +136,8 @@ export const GlobalProvider = ({ children }) => {
                 getTransactions,
                 registerUser,
                 loadUser,
-                login
+                login,
+                logout
             }}
         >
             {children}

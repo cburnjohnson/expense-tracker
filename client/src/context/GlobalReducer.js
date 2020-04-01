@@ -17,6 +17,7 @@ export default (state, action) => {
                 loading: false
             };
         case 'AUTH_ERROR':
+        case 'LOGOUT':
             return {
                 ...state,
                 token: null,
