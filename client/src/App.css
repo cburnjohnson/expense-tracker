@@ -60,6 +60,7 @@ h3 {
     padding-bottom: 10px;
     margin: 40px 0 10px;
     font-size: 1.25rem;
+    text-align: center;
 }
 
 h4 {
@@ -225,7 +226,8 @@ input[type='number'].transaction-input {
 }
 
 form {
-    width: 450px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .avatar {
