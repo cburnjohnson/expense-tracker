@@ -1,6 +1,6 @@
 # Expense Tracker
 
-#### MERN stack application that keeps track of the user's expenses.
+#### MERN Stack application that keeps track of the user's expenses.
 
 ##### Deployed Version: https://expensetracker47.herokuapp.com/
 
